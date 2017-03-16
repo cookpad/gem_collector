@@ -1,5 +1,5 @@
 # GemCollector
-Short description and motivation.
+Collect gems used by applications.
 
 ## Usage
 How to use my plugin.

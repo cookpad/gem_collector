@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = GemCollector::VERSION
   s.authors     = ["Kohei Suzuki"]
   s.email       = ["kohei-suzuki@cookpad.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of GemCollector."
-  s.description = "TODO: Description of GemCollector."
+  s.homepage    = "https://github.com/cookpad/gem_collector"
+  s.summary     = "Collect gems used by applications"
+  s.description = "Collect gems used by applications"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
