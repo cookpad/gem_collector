@@ -1,0 +1,28 @@
+%h2 Repository #{@repository.canonical_name}
+
+%div
+  %p= link_to(@repository.url, @repository.url)
+
+%div
+  - @repository.gems_with_version_point.group_by(&:path).each do |path, gems|
+    %h3= path
+    %div
+      %p Up-to-date Point: #{sprintf('%.4f', gems.sum(&:version_point) / gems.size)}
+    %table
+      %thead
+        %tr
+          %th Gem
+          %th Version
+          %th Up-to-date Point
+      %tbody
+        - gems.each do |gem|
+          %tr
+            %td= link_to(gem.name, repository_gem_path(gem.name))
+            %td= gem.version
+            %td= sprintf('%.4f', gem.version_point)
+
+%div
+  %h3 Danger Zone
+
+  = form_tag(repository_path(@repository.id), method: :delete) do
+    = submit_tag('Destroy')

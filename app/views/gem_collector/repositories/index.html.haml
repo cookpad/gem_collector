@@ -1,0 +1,22 @@
+%h2 Repositories
+
+- if flash[:alert]
+  %div
+    %p= flash[:alert]
+
+%div
+  %p= link_to('Add new repository', new_repository_path)
+  %p= link_to('All gems', repository_gems_path)
+
+%table
+  %thead
+    %tr
+      %th Repository
+      %th Path
+      %th Up-to-date Point
+  %thead
+    - @repositories.each do |repository|
+      %tr
+        %td= link_to(repository.canonical_name, repository_path(repository.id))
+        %td= repository.path
+        %td= sprintf('%.4f', repository.point)

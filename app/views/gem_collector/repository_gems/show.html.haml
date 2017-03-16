@@ -1,0 +1,33 @@
+- if flash[:notice]
+  = flash[:notice]
+  %hr
+- elsif flash[:error]
+  = flash[:error]
+  %hr
+
+%h2 Repositories using #{@gem_name}
+
+%p
+  = form_tag('', method: :get) do |f|
+    = label_tag(:from_version, 'From version:')
+    = text_field_tag(:from_version, params[:from_version])
+    = label_tag(:to_version, 'To version:')
+    = text_field_tag(:to_version, params[:to_version])
+    = submit_tag('Filter')
+
+%table
+  %thead
+    %tr
+      %th Repository
+      %th Path
+      %th Version
+  %tbody
+    - @repositories.each do |repository|
+      %tr
+        %td= link_to(repository.canonical_name, repository_path(repository.id))
+        %td= link_to(repository.gem_path, repository.url(repository.gem_path))
+        %td= repository.gem_version
+
+%hr
+
+= link_to('Create news issues on these repositories', new_gem_news_path(**params.permit(:name, :from_version, :to_version).to_h.symbolize_keys))

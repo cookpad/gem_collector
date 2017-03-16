@@ -1,0 +1,13 @@
+%h3 Create news issue on repositories using #{params[:name]}
+
+= form_tag(create_gem_news_path(name: params[:name])) do
+  = hidden_field_tag(:from_version, params[:from_version])
+  = hidden_field_tag(:to_version, params[:to_version])
+  = label_tag(:title, 'Issue title:')
+  = text_field_tag(:title, nil, size: 80)
+  %p
+    = label_tag(:body, 'Issue body:')
+  %p
+    = text_area_tag(:body, gem_news_body_template, cols: 80, rows: 20)
+  %p
+    = submit_tag('Create issues')

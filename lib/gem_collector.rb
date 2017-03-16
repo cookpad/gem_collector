@@ -1,5 +1,6 @@
-require "gem_collector/engine"
+require 'activerecord-import'
+require 'addressable'
+require 'haml'
+require 'octokit'
 
-module GemCollector
-  # Your code goes here...
-end
+require 'gem_collector/engine'

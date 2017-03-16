@@ -1,0 +1,17 @@
+%h2 All gems
+
+- if order_by_popularity?
+  = link_to 'Order by name', repository_gems_path
+- else
+  = link_to 'Order by popularity', repository_gems_path(order: 'popularity')
+
+%table
+  %thead
+    %tr
+      %th Gem
+      %th Number of repository
+  %tbody
+    - @gems.each do |name, count|
+      %tr
+        %td= link_to(name, repository_gem_path(name))
+        %td= count

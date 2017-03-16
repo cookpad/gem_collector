@@ -1,0 +1,8 @@
+%h2 New repository
+
+= form_for(@repository) do |f|
+  = f.label :site
+  = f.text_field :site, value: default_github_site
+  = f.label :full_name
+  = f.text_field :full_name, placeholder: 'cookpad/gem_collector'
+  = f.submit
