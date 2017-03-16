@@ -1,4 +1,6 @@
-# desc "Explaining what the task does"
-# task :gem_collector do
-#   # Task goes here
-# end
+namespace :gem_collector do
+  namespace :ridgepole do
+    desc 'Apply Schemafile' do
+    end
+  end
+end
