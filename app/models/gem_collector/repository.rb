@@ -59,7 +59,7 @@ class GemCollector::Repository < GemCollector::ApplicationRecord
     from_version = '0.0.0' if from_version.blank?
     find_by_sql([<<-SQL.strip_heredoc, gem_name: gem_name, from_version: from_version, to_version: to_version])
     select
-        id
+        repos.id
       , site
       , full_name
       , gems.version as gem_version
