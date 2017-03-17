@@ -1,9 +1,0 @@
-create_table "gem_collector_repository_gems", id: false, force: :cascade do |t|
-  t.integer  "repository_id", null: false
-  t.string   "name",          null: false
-  t.string   "version",       null: false
-  t.datetime "created_at",    null: false
-  t.datetime "updated_at",    null: false
-  t.string   "path",          null: false
-  t.index ["repository_id", "path", "name"], name: "idx_repository_gems", unique: true, using: :btree
-end

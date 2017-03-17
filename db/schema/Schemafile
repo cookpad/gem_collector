@@ -1,2 +1,0 @@
-require 'repositories.schema'
-require 'repository_gems.schema'
