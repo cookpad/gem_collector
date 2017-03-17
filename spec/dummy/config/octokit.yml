@@ -1,0 +1,14 @@
+default: &default
+  github.com:
+    access_token: <%= ENV['GITHUB_ACCESS_TOKEN'] %>
+    webhook_secret: <%= ENV['GITHUB_WEBHOOK_SECRET'] %>
+  github-enterprise.example.com:
+    api_endpoint: https://github-enterprise.example.com/api/v3
+    web_endpoint: https://github-enterprise.example.com
+    access_token: <%= ENV['GHE_ACCESS_TOKEN'] %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
