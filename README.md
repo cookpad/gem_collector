@@ -2,7 +2,14 @@
 Collect gems used by applications.
 
 ## Usage
-How to use my plugin.
+There're two ways to add GemCollector webhook to repository.
+
+### Add webhook from repository setting
+Visit `https://github.com/:user/:repo/settings/hooks` and add `https://gem-collector.example.com/github-webhook` with `push` event.
+
+### Add webhook from GemCollector
+Visit `https://gem-collector.example.com/repositories/new` and enter repository location.
+It will automatically add `ENV['WEBHOOK_URL']` with `push` event.
 
 ## Installation
 ### Gemfile
