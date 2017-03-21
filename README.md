@@ -1,6 +1,12 @@
 # GemCollector
 Collect gems used by applications.
 
+- Collect Gemfile.lock of the repository via GitHub webhook
+- Show gem versions of the repository
+- Show repositories using the gem
+- Show "how up-to-date?" of the repository
+- Create a issue to repositories using the gem
+
 ## Usage
 There're two ways to add GemCollector webhook to repository.
 
