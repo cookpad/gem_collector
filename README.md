@@ -1,4 +1,7 @@
 # GemCollector
+[![Gem Version](https://badge.fury.io/rb/gem_collector.svg)](https://badge.fury.io/rb/gem_collector)
+[![Build Status](https://travis-ci.org/cookpad/gem_collector.svg?branch=master)](https://travis-ci.org/cookpad/gem_collector)
+
 Collect gems used by applications.
 
 - Collect Gemfile.lock of the repository via GitHub webhook
