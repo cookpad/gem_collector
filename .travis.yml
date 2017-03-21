@@ -1,0 +1,12 @@
+language: ruby
+sudo: false
+rvm:
+  - 2.2.6
+  - 2.3.3
+  - 2.4.0
+  - ruby-head
+before_script:
+  - bin/rails db:create db:migrate
+matrix:
+  allow_failures:
+    - rvm: ruby-head
