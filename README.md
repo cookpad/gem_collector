@@ -5,22 +5,14 @@ Collect gems used by applications.
 How to use my plugin.
 
 ## Installation
+### Gemfile
 Add this line to your application's Gemfile:
 
 ```ruby
 gem 'gem_collector'
 ```
 
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install gem_collector
-```
-
+### Octokit
 Put config/octokit.yml like below.
 
 ```yaml
@@ -40,6 +32,7 @@ production:
   <<: *default
 ```
 
+### Database
 Configure database.yml. GemCollector requires PostgreSQL.
 
 ```yaml
@@ -53,6 +46,7 @@ production:
   url: <%= ENV['DATABASE_URL'] %>
 ```
 
+### ActiveJob
 Configure ActiveJob adapter. We're using [Barbeque](https://github.com/cookpad/barbeque), but other adapters should work.
 
 ```ruby
@@ -72,6 +66,14 @@ BarbequeClient.configure do |config|
     end
 end
 ```
+
+### Environment variables
+- `WEBHOOK_URL` (required when `/repositories/new` is used)
+  - URL to be added when the repository is registered from `/repositories/new`
+  - Example: `https://gem-collector.example.com/github-webhook`
+- `DEFAULT_GITHUB_SITE` (optional: default to `github.com`)
+  - Placeholder site for `/repositories/new`
+  - Example: `github-enterprise.example.com`
 
 ## Contributing
 Contribution directions go here.
