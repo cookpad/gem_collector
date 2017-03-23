@@ -91,6 +91,14 @@ end
   - Placeholder site for `/repositories/new`
   - Example: `github-enterprise.example.com`
 
+### Update latest gem versions
+
+```sh
+$ rails runner "GemCollector::UpdateLatestGemVersionsJob.new.perform"
+```
+
+It is better to automatic update gem_versions by a cron job at regular intervals.
+
 ## Contributing
 Contribution directions go here.
 
