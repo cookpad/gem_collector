@@ -20,10 +20,11 @@ class GemCollector::UpdateLatestGemVersions
     def take_latest_versions(specs)
       specs.group_by(&:first).map { |name, spec|
         # spec: [gem_name, Gem::Version, platform]
+        # XXX: platform is fixed to "ruby"
+        max_version_spec = spec.select{|a| a[2] == "ruby" }.max_by{|a| a[1] }
         [
           name,
-          # XXX: platform is fixed to "ruby"
-          spec.select{|a| a[2] == "ruby" }.max_by{|a| a[1] }&.[](1)&.version
+          max_version_spec && max_version_spec[1].version
         ]
       }
     end
