@@ -20,6 +20,11 @@ RSpec.describe GemCollector::Repository do
       expect(described_class.find_by_dependent_gem(gem_name).size).to eq(6)
     end
 
+    it 'ignores non-version-number chars without dot' do
+      FactoryGirl.create(:repository_gem, name: gem_name, version: '5.0.0beta3')
+      expect(described_class.find_by_dependent_gem(gem_name).size).to eq(6)
+    end
+
     it 'returns matched repositories with "from_version" specification' do
       repos = described_class.find_by_dependent_gem(gem_name, from_version: '5.0.0.1')
       expect(repos.map(&:gem_version)).to contain_exactly(*%w[5.0.0.1 5.1.0])
