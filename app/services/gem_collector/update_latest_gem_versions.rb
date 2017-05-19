@@ -4,10 +4,10 @@ class GemCollector::UpdateLatestGemVersions
   def run
     specs = fetch_specs
     gem_versions = take_latest_versions(specs)
+    GemCollector::LatestGemVersion.delete_all
     GemCollector::LatestGemVersion.import(
       [:gem_name, :version],
       gem_versions,
-      on_duplicate_key_update: { conflict_target: [:gem_name], columns: [:version] }
     )
   end
 
