@@ -79,6 +79,6 @@ class GemCollector::Repository < GemCollector::ApplicationRecord
   end
 
   private_class_method def self.build_version_exp(column_or_exp)
-    "(regexp_split_to_array(regexp_replace(#{column_or_exp}, '\.[^0-9.].+$', ''), '[^0-9]+') :: bigint[])"
+    "(regexp_split_to_array(regexp_replace(#{column_or_exp}, '\.[^0-9.]+$', ''), '[^0-9]+') :: bigint[])"
   end
 end
