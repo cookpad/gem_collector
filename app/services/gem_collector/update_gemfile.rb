@@ -11,7 +11,7 @@ class GemCollector::UpdateGemfile
           each_gemfile_lock(dir) do |path|
             update_gemfile_lock(repository, dir_path, path)
           end
-          repository.touch(:updated_at)
+          repository.touch
         end
       end
     end
