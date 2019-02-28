@@ -1,5 +1,6 @@
 class GemCollector::CreateGemNews
   def initialize(homepage, gem_name, title, body, from_version, to_version)
+    @homepage = homepage
     @gem_name, @body, @from_version, @to_version = gem_name, body, from_version, to_version
     @title = title.present? ? title : %!Please check for "#{gem_name}"!
   end
@@ -20,7 +21,7 @@ class GemCollector::CreateGemNews
 
   private def issue_body
     [<<-NEWS_HEADER.strip_heredoc, '', '---', '', @body].join("\n")
-    This issue was delivered from [gem_collector](homepage) because this repository depends on #{gem_name_with_version}.
+    This issue was delivered from [gem_collector](#{@homepage}) because this repository depends on #{gem_name_with_version}.
     NEWS_HEADER
   end
 
