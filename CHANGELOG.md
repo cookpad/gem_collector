@@ -1,3 +1,7 @@
+## v1.1.1 (2019-03-15)
+- Fix SQL query for Rails >= v5.1.6
+- Fix homepage link in gem news issue
+
 ## v1.1.0 (2017-08-31)
 - Upgrade Rails to v5.1
 
