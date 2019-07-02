@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317021845) do
+ActiveRecord::Schema.define(version: 20170323181402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gem_collector_latest_gem_versions", force: :cascade do |t|
+    t.string   "gem_name",   null: false
+    t.string   "version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gem_name"], name: "index_gem_collector_latest_gem_versions_on_gem_name", unique: true, using: :btree
+  end
 
   create_table "gem_collector_repositories", force: :cascade do |t|
     t.string   "site",          null: false
