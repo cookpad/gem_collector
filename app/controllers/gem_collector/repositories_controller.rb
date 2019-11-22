@@ -61,7 +61,7 @@ class GemCollector::RepositoriesController < GemCollector::ApplicationController
 
   # https://developer.github.com/webhooks/securing/
   def has_valid_signature?(site)
-    secret = Rails.application.config.octokit.fetch(site)['webhook_secret']
+    secret = Rails.application.config.octokit.fetch(site.to_sym)[:webhook_secret]
     if secret
       request.body.rewind
       payload_body = request.body.read
