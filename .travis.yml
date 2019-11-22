@@ -1,7 +1,8 @@
 language: ruby
 sudo: false
+services:
+  - postgresql
 rvm:
-  - 2.4.6
   - 2.5.5
   - 2.6.3
   - ruby-head
