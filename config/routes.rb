@@ -6,4 +6,10 @@ GemCollector::Engine.routes.draw do
   get '/gems/:name' => 'repository_gems#show', as: :repository_gem
   get '/gems/:name/new_issue' => 'gem_news#new', as: :new_gem_news
   post '/gems/:name/new_issue' => 'gem_news#create', as: :create_gem_news
+
+  namespace :api do
+    namespace :v1 do
+      resources :repositories, only: %i[index show]
+    end
+  end
 end
