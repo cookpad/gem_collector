@@ -6,9 +6,9 @@ RSpec.describe GemCollector::Repository do
 
     before do
       %w[5.1.0 5.0.0.1 5.0.0 4.2.7 4.2.7.1].each do |v|
-        FactoryGirl.create(:repository_gem, name: gem_name, version: v)
+        FactoryBot.create(:repository_gem, name: gem_name, version: v)
       end
-      FactoryGirl.create(:repository_gem, name: 'dummy')
+      FactoryBot.create(:repository_gem, name: 'dummy')
     end
 
     it 'does not care version without version specification' do
@@ -16,12 +16,12 @@ RSpec.describe GemCollector::Repository do
     end
 
     it 'ignores non-version-number chars' do
-      FactoryGirl.create(:repository_gem, name: gem_name, version: '5.0.0.beta3')
+      FactoryBot.create(:repository_gem, name: gem_name, version: '5.0.0.beta3')
       expect(described_class.find_by_dependent_gem(gem_name).size).to eq(6)
     end
 
     it 'ignores non-version-number chars without dot' do
-      FactoryGirl.create(:repository_gem, name: gem_name, version: '5.0.0beta3')
+      FactoryBot.create(:repository_gem, name: gem_name, version: '5.0.0beta3')
       expect(described_class.find_by_dependent_gem(gem_name).size).to eq(6)
     end
 

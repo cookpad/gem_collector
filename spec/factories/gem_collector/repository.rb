@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :repository, class: GemCollector::Repository do
     sequence(:repository_id) {|n| n }
     sequence(:site) {|n| "site#{n}" }
