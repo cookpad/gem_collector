@@ -55,7 +55,15 @@ class GemCollector::UpdateGemfile
   end
 
   def update_gemfile_lock(repository, dir, path)
-    lockfile_parser = Bundler::LockfileParser.new(path.read)
+    content = path.read
+    lockfile_parser =
+      begin
+        Bundler::LockfileParser.new(content)
+      rescue Bundler::LockfileError
+        # Try to parse (possibly) incompatible lockfile
+        content.sub!(/(^BUNDLED WITH\n\s*)[0-9.]+$/) { "#{$1}#{Bundler::VERSION}" }
+        Bundler::LockfileParser.new(content)
+      end
     lock_path = path.relative_path_from(dir).to_s
     records = lockfile_parser.specs.map do |spec|
       repository.repository_gems.build(path: lock_path, name: spec.name, version: spec.version.to_s)
