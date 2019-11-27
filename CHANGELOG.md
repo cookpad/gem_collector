@@ -1,3 +1,8 @@
+## v1.3.0 (2019-11-27)
+- Fix GemCollector::OctokitProvider for Octokit >= v4.14.0
+- Add JSON APIs
+  - See [doc/api](doc/api) directory to see examples of JSON response
+
 ## v1.2.0 (2019-11-22)
 - Upgrade Rails to v6.0
 
