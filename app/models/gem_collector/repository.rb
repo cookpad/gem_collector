@@ -14,10 +14,14 @@ class GemCollector::Repository < GemCollector::ApplicationRecord
     "#{site}/#{full_name}"
   end
 
+  private_class_method def self.build_version_exp(column_or_exp)
+    "(regexp_split_to_array(regexp_replace(#{column_or_exp}, '\\.?[^0-9.]+$', ''), '[^0-9]+') :: bigint[])"
+  end
+
   POINTS_FOR_GEMS_SQL = <<-SQL.strip_heredoc
     select
       gems.repository_id, gems.path, gems.name, gems.version
-      , cume_dist() over (partition by gems.name order by regexp_split_to_array(regexp_replace(version, '\.[^0-9.]+$', ''), '[^0-9]+') :: bigint[]) as version_point
+      , cume_dist() over (partition by gems.name order by #{build_version_exp('version')}) as version_point
     from
       #{GemCollector::RepositoryGem.table_name} gems
   SQL
@@ -76,9 +80,5 @@ class GemCollector::Repository < GemCollector::ApplicationRecord
       , full_name
       , gems.path
     SQL
-  end
-
-  private_class_method def self.build_version_exp(column_or_exp)
-    "(regexp_split_to_array(regexp_replace(#{column_or_exp}, '\.[^0-9.]+$', ''), '[^0-9]+') :: bigint[])"
   end
 end
