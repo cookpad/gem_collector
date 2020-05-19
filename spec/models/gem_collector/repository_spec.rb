@@ -21,6 +21,11 @@ RSpec.describe GemCollector::Repository do
     end
 
     it 'ignores non-version-number chars without dot' do
+      FactoryBot.create(:repository_gem, name: gem_name, version: '5.0.0beta')
+      expect(described_class.find_by_dependent_gem(gem_name).size).to eq(6)
+    end
+
+    it 'ignores non-version-number chars and digits without dot' do
       FactoryBot.create(:repository_gem, name: gem_name, version: '5.0.0beta3')
       expect(described_class.find_by_dependent_gem(gem_name).size).to eq(6)
     end
