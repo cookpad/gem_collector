@@ -1,6 +1,6 @@
 # GemCollector
 [![Gem Version](https://badge.fury.io/rb/gem_collector.svg)](https://badge.fury.io/rb/gem_collector)
-[![Build Status](https://travis-ci.org/cookpad/gem_collector.svg?branch=master)](https://travis-ci.org/cookpad/gem_collector)
+[![Build Status](https://github.com/cookpad/gem_collector/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/cookpad/gem_collector/actions/workflows/ci.yml)
 
 Collect gems used by applications.
 
