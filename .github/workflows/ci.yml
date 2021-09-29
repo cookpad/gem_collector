@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+    pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - 2.5
+          - 2.6
+    name: Run test with Ruby ${{ matrix.ruby }}
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: gem_collector
+          POSTGRES_PASSWORD: gem_collector
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgresql://gem_collector:gem_collector@localhost:5432/gem_collector
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bin/rails db:migrate
+      - run: bundle exec rake
