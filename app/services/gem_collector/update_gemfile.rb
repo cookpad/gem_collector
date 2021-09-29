@@ -65,8 +65,9 @@ class GemCollector::UpdateGemfile
         Bundler::LockfileParser.new(content)
       end
     lock_path = path.relative_path_from(dir).to_s
-    records = lockfile_parser.specs.map do |spec|
-      repository.repository_gems.build(path: lock_path, name: spec.name, version: spec.version.to_s)
+    # uniq is required when spec.platforms is not ruby and contains multiple platforms like x86_64-darwin-20 and x86_64-linux.
+    records = lockfile_parser.specs.map { |spec| [spec.name, spec.version.to_s] }.uniq.map do |name, version|
+      repository.repository_gems.build(path: lock_path, name: name, version: version)
     end
     GemCollector::RepositoryGem.import(records)
   end
