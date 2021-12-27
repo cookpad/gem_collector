@@ -1,3 +1,7 @@
+## v1.4.0 (2021-12-27)
+- Upgrade Rails to v6.1
+- Unique specs to cope with gemfiles containing multiple platforms
+
 ## v1.3.0 (2019-11-27)
 - Fix GemCollector::OctokitProvider for Octokit >= v4.14.0
 - Add JSON APIs
