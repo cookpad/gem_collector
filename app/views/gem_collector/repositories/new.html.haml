@@ -1,6 +1,6 @@
 %h2 New repository
 
-= form_for(@repository) do |f|
+= form_with model: @repository do |f|
   = f.label :site
   = f.text_field :site, value: default_github_site
   = f.label :full_name

@@ -24,5 +24,5 @@
 %div
   %h3 Danger Zone
 
-  = form_tag(repository_path(@repository.id), method: :delete) do
+  = form_with url: repository_path(@repository.id), method: :delete do |f|
     = submit_tag('Destroy')
