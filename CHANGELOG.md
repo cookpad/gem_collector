@@ -1,3 +1,8 @@
+## v1.5.0 (2026-01-09)
+- Upgrade Rails to v7.0
+- Drop Ruby 2.6 from CI
+- Fix quotes of ci.yml
+
 ## v1.4.0 (2021-12-27)
 - Upgrade Rails to v6.1
 - Unique specs to cope with gemfiles containing multiple platforms
