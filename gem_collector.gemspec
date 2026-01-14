@@ -21,9 +21,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml'
   s.add_dependency 'octokit'
   s.add_dependency 'pg'
-  s.add_dependency 'rails', '~> 7.0.10'
+  s.add_dependency 'rails', '~> 7.1.6'
 
   s.add_development_dependency 'autodoc'
   s.add_development_dependency 'factory_bot_rails'
+  s.add_development_dependency 'faraday-retry'
   s.add_development_dependency 'rspec-rails'
 end
