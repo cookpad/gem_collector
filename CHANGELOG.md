@@ -1,3 +1,6 @@
+## v1.6.0 (2026-01-14)
+- Upgrade Rails to v7.1
+
 ## v1.5.0 (2026-01-09)
 - Upgrade Rails to v7.0
 - Drop Ruby 2.6 from CI
