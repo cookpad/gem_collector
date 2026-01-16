@@ -1,3 +1,7 @@
+## v1.8.0 (2026-01-16)
+- Upgrade Rails to v8.0
+- Drop support for Ruby 3.1
+
 ## v1.7.0 (2026-01-15)
 - Upgrade Rails to v7.2
 - Drop support for Ruby 2.7 and 3.0
