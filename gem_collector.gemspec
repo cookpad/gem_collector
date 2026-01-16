@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml'
   s.add_dependency 'octokit'
   s.add_dependency 'pg'
-  s.add_dependency 'rails', '~> 7.2.3'
+  s.add_dependency 'rails', '~> 8.0.0'
 
   s.add_development_dependency 'autodoc'
   s.add_development_dependency 'factory_bot_rails'
